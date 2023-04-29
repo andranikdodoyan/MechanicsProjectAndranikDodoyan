@@ -2,7 +2,7 @@ public abstract class Converter {
     public final double DT = 0.1;
     public final double T = 10;
     public final int N = 100;
-    public abstract int toDecimalUsingSprings(String binarySequence);
+    public abstract String toSpringExpr(String binarySequence);
     public double[] computeOscillations(Spring systemOfSprings) {
         return systemOfSprings.move(T, DT, 0);
     }

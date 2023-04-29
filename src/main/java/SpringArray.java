@@ -5,6 +5,9 @@ import java.util.Stack;
 
 public class SpringArray {
     public static Spring equivalentSpring(String springExpr) {
+        if(springExpr.isEmpty()) {
+            return new Spring(0);
+        }
         String out = springExpr.replaceAll("\\[\\]", "1").replaceAll("\\{\\}", "1");
         List<String> outStringList = Arrays.asList(out.split(""));
 
