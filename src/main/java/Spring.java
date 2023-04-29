@@ -38,25 +38,25 @@ public class Spring {
         double x_current = x0;
         double v_current = v0;
         double t_current = t0;
-
+        double a, b;
+        if (Math.sin(omega*t_current) == 0) {
+            b = x_current / Math.cos(omega*t_current);
+            a = v_current / (omega * Math.cos(omega*t_current));
+        } else if (Math.cos(omega*t_current) == 0) {
+            a = x_current / Math.sin(omega*t_current);
+            b = - (v_current / omega * Math.sin(omega*t_current));
+        } else {
+            a = (x_current / Math.cos(omega*t_current) + v_current / (omega*Math.sin(omega*t_current))) * Math.sin(2*omega*t_current);
+            b = (x_current - a * Math.sin(omega*t_current)) / Math.cos(omega*t_current);
+        }
 
         for (int i = 0; i < size; i++) {
-            double a, b;
-            if (Math.sin(omega*t_current) == 0) {
-                b = x_current / Math.cos(omega*t_current);
-                a = v_current / (omega * Math.cos(omega*t_current));
-            } else if (Math.cos(omega*t_current) == 0) {
-                a = x_current / Math.sin(omega*t_current);
-                b = - (v_current / omega * Math.sin(omega*t_current));
-            } else {
-                a = (x_current / Math.cos(omega*t_current) + v_current / (omega*Math.sin(omega*t_current))) * Math.sin(2*omega*t_current);
-                b = (x_current - a * Math.sin(omega*t_current)) / Math.cos(omega*t_current);
-            }
+
             x_current = a * Math.sin(omega*t_current) + b * Math.cos(omega*t_current);
-            v_current = omega * a * Math.cos(omega*t_current) - omega * b * Math.sin(omega*t_current);
             t_current = t_current + dt;
             coords[i] = x_current;
         }
+
 
         return coords;
     }

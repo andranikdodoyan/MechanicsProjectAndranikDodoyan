@@ -30,29 +30,28 @@ public class Converter8Bit extends Converter{
     public static void main(String[] args) {
         String binaryExample = "00000000"; //0
         String binarySpring = new Converter8Bit().toSpringExpr(binaryExample);
-        double decimal = SpringArray.equivalentSpring(binarySpring).getStiffness();
+        Spring spring = SpringArray.equivalentSpring(binarySpring);
+        double decimal = spring.getStiffness();
         System.out.println(decimal);
 
         binaryExample = "00001001"; //9
         binarySpring = new Converter8Bit().toSpringExpr(binaryExample);
-        decimal = SpringArray.equivalentSpring(binarySpring).getStiffness();
+         spring = SpringArray.equivalentSpring(binarySpring);
+         decimal = spring.getStiffness();
         System.out.println(decimal);
 
         binaryExample = "00011000"; //24
         binarySpring = new Converter8Bit().toSpringExpr(binaryExample);
-        decimal = SpringArray.equivalentSpring(binarySpring).getStiffness();
+        spring = SpringArray.equivalentSpring(binarySpring);
+        decimal = spring.getStiffness();
         System.out.println(decimal);
 
         binaryExample = "11011000";//216
         binarySpring = new Converter8Bit().toSpringExpr(binaryExample);
-        decimal = SpringArray.equivalentSpring(binarySpring).getStiffness();
+        spring = SpringArray.equivalentSpring(binarySpring);
+        decimal = spring.getStiffness();
         System.out.println(decimal);
 
-
     }
 
-    @Override
-    public int toDecimalUsingFT(String binarySequence) {
-        return 0;
-    }
 }
