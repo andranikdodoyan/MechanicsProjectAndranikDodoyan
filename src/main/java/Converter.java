@@ -5,12 +5,10 @@ public abstract class Converter {
     private static double[] computeOscillations(Spring systemOfSprings) {
         return systemOfSprings.move(T, DT, 0, 1);
     }
-    public static double[] computeAmplitudesOfeOscillations(Spring systemOfSprings, int N) {
+    protected static double[] computeAmplitudesOfeOscillations(Spring systemOfSprings, int N) {
         double[] oscillations = computeOscillations(systemOfSprings);
         return FT.findAmplitudes(oscillations, N, DT);
     }
 
-    public static double computeDecimalFromFT(Spring spring, int N) {
-        return Math.pow(FT.findMaxAmplitudeIndex(computeAmplitudesOfeOscillations(spring, N)), 2);
-    }
+    public abstract double computeDecimalFromFT(Spring spring, int N);
 }

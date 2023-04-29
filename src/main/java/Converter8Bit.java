@@ -19,48 +19,52 @@ public class Converter8Bit extends Converter{
             }
         }
         if(springExpr.length() > 2) {
-            if(springExpr.length() > 2) {
-                springExpr += "]";
-                springExpr = "["+springExpr;
-            }
+            springExpr += "]";
+            springExpr = "["+springExpr;
         }
         return springExpr;
     }
+    @Override
+    public double computeDecimalFromFT(Spring spring, int N) {
+        return Math.pow(FT.findMaxAmplitudeIndex(computeAmplitudesOfeOscillations(spring, N)), 2);
+
+    }
 
     public static void main(String[] args) {
+        Converter8Bit thisConverter8Bit = new Converter8Bit();
         String binaryExample = "00000000"; //0
-        String binarySpring = new Converter8Bit().toSpringExpr(binaryExample);
+        String binarySpring = thisConverter8Bit.toSpringExpr(binaryExample);
         Spring spring = SpringArray.equivalentSpring(binarySpring);
         double decimal = spring.getStiffness();
-        System.out.println(computeDecimalFromFT(spring, 30));
+        System.out.println(thisConverter8Bit.computeDecimalFromFT(spring, 30));
         System.out.println(decimal);
 
         binaryExample = "00001001"; //9
-        binarySpring = new Converter8Bit().toSpringExpr(binaryExample);
+        binarySpring = thisConverter8Bit.toSpringExpr(binaryExample);
         spring = SpringArray.equivalentSpring(binarySpring);
         decimal = spring.getStiffness();
-        System.out.println(computeDecimalFromFT(spring, 30));
+        System.out.println(thisConverter8Bit.computeDecimalFromFT(spring, 30));
         System.out.println(decimal);
 
         binaryExample = "00011000"; //24
-        binarySpring = new Converter8Bit().toSpringExpr(binaryExample);
+        binarySpring = thisConverter8Bit.toSpringExpr(binaryExample);
         spring = SpringArray.equivalentSpring(binarySpring);
         decimal = spring.getStiffness();
-        System.out.println(computeDecimalFromFT(spring, 30));
+        System.out.println(thisConverter8Bit.computeDecimalFromFT(spring, 255/8));
         System.out.println(decimal);
 
         binaryExample = "00001000"; //24
-        binarySpring = new Converter8Bit().toSpringExpr(binaryExample);
+        binarySpring = thisConverter8Bit.toSpringExpr(binaryExample);
         spring = SpringArray.equivalentSpring(binarySpring);
         decimal = spring.getStiffness();
-        System.out.println(computeDecimalFromFT(spring, 30));
+        System.out.println(thisConverter8Bit.computeDecimalFromFT(spring, 255/8));
         System.out.println(decimal);
 
         binaryExample = "11011000";//216
-        binarySpring = new Converter8Bit().toSpringExpr(binaryExample);
+        binarySpring = thisConverter8Bit.toSpringExpr(binaryExample);
         spring = SpringArray.equivalentSpring(binarySpring);
         decimal = spring.getStiffness();
-        System.out.println(computeDecimalFromFT(spring, 30));
+        System.out.println(thisConverter8Bit.computeDecimalFromFT(spring, 255/8));
         System.out.println(decimal);
 
     }
