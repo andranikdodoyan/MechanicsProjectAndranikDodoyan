@@ -36,20 +36,23 @@ public class Converter8Bit extends Converter{
 
         binaryExample = "00001001"; //9
         binarySpring = new Converter8Bit().toSpringExpr(binaryExample);
-         spring = SpringArray.equivalentSpring(binarySpring);
-         decimal = spring.getStiffness();
+        spring = SpringArray.equivalentSpring(binarySpring);
+        decimal = spring.getStiffness();
+        System.out.println(computeDecimalFromFT(spring));
         System.out.println(decimal);
 
         binaryExample = "00011000"; //24
         binarySpring = new Converter8Bit().toSpringExpr(binaryExample);
         spring = SpringArray.equivalentSpring(binarySpring);
         decimal = spring.getStiffness();
+        System.out.println(computeDecimalFromFT(spring));
         System.out.println(decimal);
 
         binaryExample = "11011000";//216
         binarySpring = new Converter8Bit().toSpringExpr(binaryExample);
         spring = SpringArray.equivalentSpring(binarySpring);
         decimal = spring.getStiffness();
+        System.out.println(computeDecimalFromFT(spring));
         System.out.println(decimal);
 
     }
