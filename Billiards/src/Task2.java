@@ -110,26 +110,20 @@ public class Task2 {
         return arrayOfLists;
     }
 
-    public static int findMinNumberOfIterationsReversed(double delta) {
-        int n = 1;
-        List<List<Pair2D>> result = testReversed(10);
+    public static String findMinNumberOfIterationsReversed(double delta) {
+        int n = -1;
+        List<List<Pair2D>> result = testReversed(100);
         double[] differences = new double[result.get(0).size()];
-        boolean flag = true;
-        while (flag) {
-            for(int i=0; i < result.get(0).size(); i++) {
-                differences[i] = Math.sqrt(Math.pow(result.get(1).get(i).getX() - result.get(0).get(i).getX(), 2) +
-                        Math.pow(result.get(1).get(i).getY() - result.get(0).get(i).getY(), 2));
-                if(differences[i] < delta) {
-                    flag = false;
-                }
-            }
-            if(flag == true) {
-                result = testReversed(10);
-                differences = new double[result.get(0).size()];
-                n++;
+        for(int i=0; i < result.get(0).size(); i++) {
+            differences[i] = Math.sqrt(Math.pow(result.get(1).get(i).getX() - result.get(0).get(i).getX(), 2) +
+                    Math.pow(result.get(1).get(i).getY() - result.get(0).get(i).getY(), 2));
+            System.out.println(differences[i]);
+            if(differences[i] > delta) {
+                n = i;
+                break;
             }
         }
-        return n;
+        return "After n numbers of refelections, n="+(n+1);
     }
 
     public static void runNtimes() {
@@ -147,7 +141,7 @@ public class Task2 {
 
     public static void main(String[] args) {
         runNtimes();
-        System.out.println(findMinNumberOfIterationsReversed(0.0001));
+        System.out.println(findMinNumberOfIterationsReversed(0.000001));
 
     }
 
