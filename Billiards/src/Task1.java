@@ -111,19 +111,16 @@ public class Task1 {
         }
     }
 
-    public static int determineMinIterations() {
-        int n = 100;
-        Pair2D initPosition = generateInitialPoint();
-        Pair2D initMomentum = generateInitialMomentum();
-        testBilliardAlsoReversed(n, initPosition, initMomentum);
-        return n;
-    }
-
 
     public static void main(String[] args) {
         runNtimes();
         //Paths almost coincided, the difference very small
-        determineMinIterations();
+        Pair2D initPosition = generateInitialPoint();
+        Pair2D initMomentum = generateInitialMomentum();
+        List<List<Pair2D>> result = testBilliardAlsoReversed(10, initPosition, initMomentum);
+        for (int i = 0; i < result.get(0).size(); i++) {
+            System.out.println(result.get(0).get(i) + " vs " + result.get(1).get(result.get(0).size() - 1 - i));
+        }
 
     }
 }
